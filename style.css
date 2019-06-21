@@ -1,0 +1,37 @@
+.navbar-default {
+    background-color: #f8f366;
+    border-bottom: 2px solid black;
+    top:0;
+    width: 100%;
+}
+thumbnailstyle {
+    text-align: center;
+    font-family: monospace;
+}
+thumbnailstyle:hover {
+    color: #ac8b40;
+}
+.compbar {
+    padding: 20px;
+    color: #ac8b40;
+    background-color: #222;
+    font-family: monospace;
+    text-align: center;
+}
+.h {
+    color: #f8f366;
+    font-size: 150%;
+    }
+@media only screen and (max-width:992px) {
+	.cl-effect-5 > li > a span[data-hover]:before{
+        color: #f8f366!important;
+	}
+ul.navbar-nav span.h {
+        color: #fff;
+        color: white;
+    }
+ul.navbar-nav span.hs {
+        color: #fff;
+        color: black;
+    }
+}

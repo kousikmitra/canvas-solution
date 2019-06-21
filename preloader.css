@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+/*
+	[ Shortcode Stylesheet ]
+	<?xml version="1.0" encoding="UTF-8"?>
+
+	Theme Name: Coco
+	Version: 1.0.0
+	Author: webPentagon
+	Author URI: 
+	Description:Multi-Purpose Theme by webPentagon
+*/
+
+
+@import "fonts.css";
+@import "font-awesome.min.css";
+@import "bootstrap.min.css";
+@import "lightbox.css";
+@import "style.css";
+@import "owl.carousel.css";
+@import "owl.theme.css";
+@import "owl.transitions.css";
+@import "responsive.css";
+@import "new.css";
+@import "jquery.bxslider.css";
+@import "cubeportfolio.css";
+
+@import "revolution/settings.css";
+@import "revolution/navigation.css";
+@import "revolution/layers.css";
+
+
+
+

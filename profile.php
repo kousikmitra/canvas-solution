@@ -118,12 +118,10 @@ img.emoji {
                 <img src="<?php echo $photo; ?>" alt="Profile Photo" width="250" height="250">
             </div>
             <div class="col-md-4">
-            <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Name : </span>
+            <h3 class="section-title"  style="font-size:22px;text-align:left ">
                     <span class="color_yellow"><?php echo "$name"; ?></span>
                 </h3>
-                <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Email Id : </span>
+                <h3 class="section-title"  style="font-size:1.5rem;text-align:left ">
                     <span class="color_yellow"><?php echo "$email"; ?></span>
                 </h3>
             </div>
@@ -131,15 +129,15 @@ img.emoji {
         <div class="row">
             <div class="col-md-4" style="margin-left: 18%;">
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Gender : </span>
+                    <span class="color_black"  style="font-size:1.8rem;">Gender : </span>
                     <span class="color_yellow"><?php echo "$gender"; ?></span>
                 </h3>
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Pincode : </span>
+                    <span class="color_black"  style="font-size:1.8rem;">Pincode : </span>
                     <span class="color_yellow"><?php echo "$pincode"; ?></span>
                 </h3>
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">City : </span>
+                    <span class="color_black"  style="font-size:1.8rem;">City : </span>
                     <span class="color_yellow"><?php echo "$city"; ?></span>
                 </h3>
             </div>
@@ -157,15 +155,15 @@ img.emoji {
                 
                 ?>
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Questions Asked  : </span>
-                    <span class="color_yellow"><?php echo "$asked_question"; ?></span>
+                    <span class="color_black"  style="font-size:1.8rem;">Questions Asked  : </span>
+                    <span class="" style="color: #555;"><?php echo "$asked_question"; ?></span>
                 </h3>
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Questions Answered : </span>
+                    <span class="color_black"  style="font-size:1.8rem;">Questions Answered : </span>
                     <span class="color_yellow"><?php echo "$answered_question"; ?></span>
                 </h3>
                 <h3 class="section-title"  style="font-size:24px;text-align:left ">
-                    <span class="color_black">Total Upvotes  : </span>
+                    <span class="color_black"  style="font-size:1.8rem;">Total Upvotes  : </span>
                     <span class="color_yellow"><?php echo "$upvote "; ?></span>
                 </h3>
             </div>

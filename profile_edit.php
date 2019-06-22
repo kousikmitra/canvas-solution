@@ -30,6 +30,7 @@ img.emoji {
 }
 </style>
 <link rel='stylesheet' id='mainstyle-css'  href='ust/st1.css' type='text/css' media='all' />
+
 <style>
 #backtotop ul li a{
 	background: url(images/up.png) center 48% no-repeat #fff;
@@ -90,11 +91,11 @@ img.emoji {
     </style>
     </head>
 <body class="home page-template page-template-frontpage page-template-frontpage-php page page-id-10 wpb-js-composer js-comp-ver-4.12 vc_responsive" data-spy="scroll" data-target=".navbar-center">
-<div id="preloader">
+<!-- <div id="preloader">
         <div class="preloader-container">
           <img src="https://moveup.co.za/wp-content/uploads/2018/07/earth-.gif" class="preload-gif" alt="Ricochet" style="height:30%;width:50%">
         </div>
-    </div> 
+    </div>  -->
 <?php
     include 'includes/header.php';
     ?>
@@ -137,20 +138,32 @@ img.emoji {
     
     <div style="height: 120px"></div>
     
-<div class="container-fluid">
-    <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6" style="padding:10px;padding-bottom:0;margin:0;border:2px solid white">
+<div class="container">
+    <div class="row" style="margin-left: 20%;">
+    <div class="col-md-4 col-sm-offset-2" style="padding:10px;padding-bottom:0;margin:0;border:2px solid white">
+    <div class="panel panel-default" style="padding:10px;margin:0;border:2px solid black">
+            <div class="panel-heading" style="background-color:black;color:white"><h3>Update Your Photo</h3></div>
+            <div class="panel-body">
+            <form method="post" action="" enctype="multipart/form-data">
+                <img src="./profile_images/default.png" alt="" width="190" height="185" style="margin-left: 20px;">
+                <div class="form-group" style="margin-bottom: 2%; border-radius: 10%;"><input type="file" class="form-control input-md inputfield" name="photo"></div>
+            <input type="submit" value="Update" name="update_photo" class="btn btn-md input-center" style="background-color:#3949AB;color:white; margin-left: 25%; margin-top: 10%;">
+            </form>
+            </div>
+        </div>
+        <div style="height: 30px"></div>
+    </div>
+    <div class="col-md-5" style="padding:10px;padding-bottom:0;margin:0;border:2px solid white; margin-left: 20px;">
         <div class="panel panel-default" style="padding:10px;margin:0;border:2px solid black">
             <div class="panel-heading" style="background-color:black;color:white"><h3>Update Details</h3></div>
             <div class="panel-body">
             <form method="post" action="">
-                <div class="form-group"><input type="text" class="form-control input-md" placeholder="Name" name="name" ></div>
-                <div class="form-group"><input type="email" class="form-control input-md" placeholder="Email" name="email"></div>
-                <div class="form-group"><input type="number" class="form-control input-md" placeholder="Contact" name="contact" pattern=".{10,}" maxlength="10"></div>
-                <div class="form-group"><input type="number" class="form-control input-md" placeholder="Pincode" name="pincode"  pattern=".{12,}" maxlength="12"></div>
-                <div class="form-group"><input type="text" class="form-control input-md" placeholder="City" name="city" ></div>
-            <input type="submit" value="Update" name="modify" class="btn btn-md" style="background-color:black;color:white">
+                <div class="form-group" style="margin-bottom: 4%;"><input type="email" class="form-control input-md" style=" border-radius: 15px; border: 1px #3949AB solid;" placeholder="Email" name="email"></div>
+                <div class="form-group" style="margin-bottom: 4%;"><input type="number" class="form-control input-md" style=" border-radius: 15px; border: 1px #3949AB solid;" placeholder="Contact" name="contact" pattern=".{10,}" maxlength="10"></div>
+                <div class="form-group" style="margin-bottom: 4%;"><input type="text" class="form-control input-md" style=" border-radius: 15px; border: 1px #3949AB solid;" placeholder="Name" name="name" ></div>
+                <div class="form-group" style="margin-bottom: 4%;"><input type="number" class="form-control input-md" style=" border-radius: 15px; border: 1px #3949AB solid;" placeholder="Pincode" name="pincode"  pattern=".{12,}" maxlength="12"></div>
+                <div class="form-group" style="margin-bottom: 4%;"><input type="text" class="form-control input-md" style=" border-radius: 15px; border: 1px #3949AB solid;" placeholder="City" name="city" ></div>
+            <input type="submit" value="Update" name="modify" class="btn btn-md input-center" style="background-color:#3949AB;color:white; margin-left: 25%; margin-top: 10%;">
             </form>
             </div>
         </div>
@@ -195,6 +208,37 @@ img.emoji {
         header('location:profile.php');
         exit();
         
+    }
+
+    if(isset($_POST['update_photo'])){
+        if (isset($_FILES['photo'])) {
+            $myFile = $_FILES['photo'];
+            extract($_POST);
+            $error = array();
+            $extension = array("jpeg", "jpg", "png", "gif");
+                $file_name = $_FILES["photo"]["name"];
+                $file_tmp = $_FILES["photo"]["tmp_name"];
+                $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                if (in_array($ext, $extension)) {
+                    if (!file_exists("./profile_images/" . $file_name)) {
+                        if(move_uploaded_file($file_tmp = $_FILES["photo"]["tmp_name"], "./profile_images/" . $file_name)){
+                            $images_name = "./profile_images/".$file_name;
+                        }
+                    } else {
+                        $filename = basename($file_name, $ext);
+                        $newFileName = $filename . time() . "." . $ext;
+                        if(move_uploaded_file($file_tmp = $_FILES["photo"]["tmp_name"], "./profile_images/" . $newFileName)){
+                            $images_name = "./profile_images/".$newFileName;
+                        }
+                    }
+                } else {
+                    array_push($error, "$file_name, ");
+                }
+        }
+        $update_photo = mysqli_query($con,"UPDATE user SET photo='{$images_name}' WHERE user_id={$_SESSION['user_id']}") or die(mysqli_error($con));
+        if($update_photo){
+            header('location: ./profile.php');
+        }
     }
     
     ob_end_flush();

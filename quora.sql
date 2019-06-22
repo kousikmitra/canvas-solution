@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 21, 2019 at 11:27 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: Jun 22, 2019 at 11:55 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,7 +34,7 @@ CREATE TABLE `answer` (
   `user_id` int(255) NOT NULL,
   `answer` longtext NOT NULL,
   `upvote` int(20) NOT NULL,
-  `answer_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `answer_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54,7 +54,7 @@ INSERT INTO `answer` (`answer_id`, `question_id`, `user_id`, `answer`, `upvote`,
 (10, 7, 12, 'As Evan You, Vue.js creator himself, says in the State of Vue.js report, the core team plan to explore and implement many new ideas in the coming years. They come from feature requests, inspirations from the broader web dev community, and real-life use cases.<br />\r\n<br />\r\nThere are new JavaScript language features (e.g. ES2015 Proxy, Promises) that may simplify or improve the current API. Vue.js will start taking advantage of these features in a parallel branch which requires latest evergreen browsers.<br />\r\n<br />\r\nThe core team is also keeping an eye on emerging standards such as ES class syntax improvements (class elds and decorators), Web Components (custom elements & HTML modules) and Web Assembly.', 2, '2019-06-21 07:42:02'),
 (11, 7, 8, 'Donâ€™t try to guess what the next big fad is going to be. Rather, pick a technology you like and become really, really good at it. It doesnâ€™t matter if itâ€™s Vue.js, React, Angular or jQuery. If you are really, really good, you will easily land a job that you like.', 2, '2019-06-21 07:42:02'),
 (12, 8, 10, 'Iâ€™ll tell you about something that exists right now that no group of the smartest people in the world can figure out.<br />\r\n<br />\r\nNeural network algorithms are a type of artificial intelligence used every day. Google uses advanced algorithms to give you top-notch search results. YouTube recommends videos to you using algorithms. Self-driving cars utilize insanely complex neural networks to recognize if a human is in their path or not, so they can stop in time. Quora even uses them to suggest the 10 most interesting questions to you in your daily Digest. Neural networks are all over, and theyâ€™re important.<br />\r\n<br />\r\nHowever, nobody knows how they work.<br />\r\n<br />\r\nImagine a complex neural network that a programmer feeds a billion pictures of humans into, then a billion pictures of different cars into it (with the programmer explaining whether each picture is an image of a human or a car).<br />\r\n<br />\r\nIf this example sounds familiar, it probably is. Has Google recently asked you to identify pictures of road signs, cars, or streets for its reCAPTCHA, to make sure youâ€™re not a bot? If so, youâ€™ve become the programmer telling the algorithm the answer to the image. Coincidentally, Google is developing its own self-driving car right now, and youâ€™ve become free labor for them to help train their algorithms. Fun, huh?<br />\r\n<br />\r\nAfter feeding it billions of pictures, the algorithm gets pretty good at predicting whether any additional image is a car or a human. But, we have no idea what happens to the data after it enters the â€œblack boxâ€.', 1, '2019-06-21 07:42:02'),
-(13, 11, 9, 'I first studied CS during the bubble of the early 90s. Jobs were aplenty.<br />\r\n<br />\r\nThe .COM boom popped, and suddenly there were far more graduates than jobs. Demand for IT quickly recovered and jobs soon outstripped supply again.<br />\r\n<br />\r\nAs for nowâ€¦ I donâ€™t know, the world is a bit different. Most people entering the workforce now have grown up with ubiquitous computers their entire life. The marketers, sales guys, book-keepers and business executives have all had a computer at their desk from the moment they graduated.<br />\r\n<br />\r\nWill there still be a demand for advanced skills in a world where everyone knows the basics? I would have guessed that yes, there will. However the kinds of demands placed on an expert by someone familiar with technology are very different to the kinds of demands placed by someone who doesnâ€™t know what theyâ€™re doing. I think things are going to change quite a lot.', 0, '2019-06-21 07:42:02');
+(13, 11, 9, 'I first studied CS during the bubble of the early 90s. Jobs were aplenty.<br />\r\n<br />\r\nThe .COM boom popped, and suddenly there were far more graduates than jobs. Demand for IT quickly recovered and jobs soon outstripped supply again.<br />\r\n<br />\r\nAs for nowâ€¦ I donâ€™t know, the world is a bit different. Most people entering the workforce now have grown up with ubiquitous computers their entire life. The marketers, sales guys, book-keepers and business executives have all had a computer at their desk from the moment they graduated.<br />\r\n<br />\r\nWill there still be a demand for advanced skills in a world where everyone knows the basics? I would have guessed that yes, there will. However the kinds of demands placed on an expert by someone familiar with technology are very different to the kinds of demands placed by someone who doesnâ€™t know what theyâ€™re doing. I think things are going to change quite a lot.', 1, '2019-06-21 07:42:02');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `question` (
   `user_id` int(255) NOT NULL,
   `question` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `post_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `upvote` (
   `upvote_id` int(255) NOT NULL,
   `answer_id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
-  `upvote_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `upvote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -147,7 +147,8 @@ INSERT INTO `upvote` (`upvote_id`, `answer_id`, `user_id`, `upvote_date`) VALUES
 (40, 11, 8, '2019-06-21 07:40:53'),
 (41, 11, 10, '2019-06-21 07:40:53'),
 (42, 9, 10, '2019-06-21 07:40:53'),
-(43, 12, 10, '2019-06-21 07:40:53');
+(43, 12, 10, '2019-06-21 07:40:53'),
+(44, 13, 13, '2019-06-22 09:39:37');
 
 -- --------------------------------------------------------
 
@@ -164,8 +165,8 @@ CREATE TABLE `user` (
   `pincode` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `gender` enum('Male','Female') DEFAULT NULL,
-  `photo` text DEFAULT './profile_images/default.png',
-  `date_reg` timestamp NOT NULL DEFAULT current_timestamp()
+  `photo` varchar(255) DEFAULT './profile_images/default.png',
+  `date_reg` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -185,7 +186,7 @@ INSERT INTO `user` (`user_id`, `name`, `email`, `password`, `contact`, `pincode`
 (10, 'test10', 'test10@gmail.com', '54d81c310e02f401dde3a5856de2e097', '1010101010', '742101', 'Berhampore', 'Male', './profile_images/default.png', '2019-06-21 07:40:27'),
 (11, 'test11', 'test11@gmail.com', 'e55dd114dc5e2fcfda4bb7f971892c4f', '1100110011', '742101', 'Berhampore', 'Male', './profile_images/default.png', '2019-06-21 07:40:27'),
 (12, 'test12', 'test12@gmail.com', '69bb196fd3c175465007a7fcee5a53ac', '1212121212', '742101', 'Berhampore', 'Male', './profile_images/default.png', '2019-06-21 07:40:27'),
-(13, 'KOUSIK MITRA', 'kousikmitra12@gmail.com', '14e1b600b1fd579f47433b88e8d85291', '8145169168', '711303', 'Bagnan', 'Male', './profile_images/default.png', '2019-06-21 07:40:27');
+(13, 'KOUSIK MITRA', 'kousikmitra12@gmail.com', '14e1b600b1fd579f47433b88e8d85291', '8145169168', '711303', 'Bagnan', 'Male', './profile_images/2nd.1561196326.jpg', '2019-06-21 07:40:27');
 
 --
 -- Indexes for dumped tables
@@ -240,7 +241,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `upvote`
 --
 ALTER TABLE `upvote`
-  MODIFY `upvote_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `upvote_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user`

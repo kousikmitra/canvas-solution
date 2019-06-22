@@ -118,7 +118,7 @@ img.emoji {
             ?>
             <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-8"><h3 style="font-family: 'Baloo Bhai', cursive;margin-bottom:50px;font-weight:200;text-align:right">Question By  - <?php echo "<a href='profile.php?user_id=$question_user_id'>$name</a>"; ?></h3></div>
+                <div class="col-md-8"><h3 style="font-family: 'Baloo Bhai', cursive;margin-bottom:50px;font-weight:200;text-align:right">Questioned By  - <?php echo "<a href='profile.php?user_id=$question_user_id'>$name</a>"; ?></h3></div>
                 <div class="col-md-2"></div>
             </div> <?php
             $query="SELECT * FROM answer WHERE question_id='$question_id' order by upvote desc";
@@ -140,7 +140,7 @@ img.emoji {
                     ?>
                     <div class="row" style="margin:50px 0px">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8" style="background-color:#fff; box-shadow:20px 20px 10px grey; padding:30px">
+                    <div class="col-md-8" style="background-color:#fff; box-shadow:2px 2px 5px grey; padding:30px; border-radius: 10px;">
                         <h4><?php echo "$answer"; ?></h4>
                         <h5 style="color:#777777;font-weight:bold;text-align:right" ><?php echo "Answered By - <a href='profile.php?user_id=$answer_user_id'>$r</a>"; ?></h5>
                         <h5 style="color:#2bd92b;font-weight:bold;text-align:right;" ><?php echo "Total Upvotes - $upvote"; ?></h5>
@@ -173,7 +173,7 @@ img.emoji {
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8" style="padding:10px;padding-bottom:0;margin:0;">
-                <div class="panel panel-default" style="padding:10px;margin:0;">
+                <div class="panel panel-default" style="padding:10px;margin:0; border-radius: 10px;">
                     <div class="panel-heading" style="background-color:black;color:white"><h3>Write An Answer</h3></div>
                     <div class="panel-body">
                         <form method="post" action="post_answer.php">

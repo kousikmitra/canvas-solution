@@ -120,6 +120,13 @@ img.emoji {
             <div class="col-md-4">
             <h3 class="section-title"  style="font-size:22px;text-align:left ">
                     <span class="color_yellow"><?php echo "$name"; ?></span>
+                    <?php 
+                    if(isset($_GET['user_id']) && ($_GET['user_id'] != $_SESSION['user_id'])){
+                        ?>
+                    <span style="margin-left: 10%;"><a href="./chat/?sent_to=<?php echo $row['user_id']; ?>" class="btn btn-primary">Send Message</a></span>
+                    <?php
+                    }
+                    ?>
                 </h3>
                 <h3 class="section-title"  style="font-size:1.5rem;text-align:left ">
                     <span class="color_yellow"><?php echo "$email"; ?></span>

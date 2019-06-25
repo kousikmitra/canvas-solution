@@ -1,5 +1,5 @@
 .navbar-default {
-    background-color: #f8f366;
+    background-color: #23517c;
     border-bottom: 2px solid black;
     top:0;
     width: 100%;
@@ -14,12 +14,13 @@ thumbnailstyle:hover {
 .compbar {
     padding: 20px;
     color: #ac8b40;
+    text-shadow: 10px 10px #fff;
     background-color: #222;
     font-family: monospace;
     text-align: center;
 }
 .h {
-    color: #f8f366;
+    color: #2b64ad;
     font-size: 150%;
     }
 @media only screen and (max-width:992px) {

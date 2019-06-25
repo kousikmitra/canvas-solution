@@ -109,7 +109,7 @@ img.emoji {
                     ?>
                     <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8" style="background-color:#fff;box-shadow:20px 20px 10px grey;margin:20px 0;padding:15px;border:.1px solid grey">
+                    <div class="col-md-8" style="background-color:#fff;box-shadow:1px 1px 5px 0px grey;margin:20px 0;padding:15px;">
                         <h4><a href='answers.php?question_id=<?php echo "$question_id" ?>'><?php echo "$c.$question"; ?></a></h4>
                         <?php
                         

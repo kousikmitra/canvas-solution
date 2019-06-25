@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 22, 2019 at 11:55 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: localhost
+-- Generation Time: Jun 25, 2019 at 03:07 PM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,7 +34,7 @@ CREATE TABLE `answer` (
   `user_id` int(255) NOT NULL,
   `answer` longtext NOT NULL,
   `upvote` int(20) NOT NULL,
-  `answer_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `answer_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -59,6 +59,31 @@ INSERT INTO `answer` (`answer_id`, `question_id`, `user_id`, `answer`, `upvote`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `sent_to` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `sent_on` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `user_id`, `sent_to`, `message`, `sent_on`) VALUES
+(1, 13, 1, 'hi', '2019-06-25 11:43:42'),
+(2, 1, 13, 'hello', '2019-06-25 11:44:03'),
+(3, 1, 13, 'how are you?', '2019-06-25 11:45:32'),
+(4, 13, 9, 'hi', '2019-06-25 11:55:57'),
+(5, 13, 9, 'how are you?', '2019-06-25 12:01:22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `question`
 --
 
@@ -67,7 +92,7 @@ CREATE TABLE `question` (
   `user_id` int(255) NOT NULL,
   `question` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `post_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -90,6 +115,50 @@ INSERT INTO `question` (`question_id`, `user_id`, `question`, `category`, `post_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `report_answer`
+--
+
+CREATE TABLE `report_answer` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `answer_id` int(11) NOT NULL,
+  `report_details` text NOT NULL,
+  `report_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `report_answer`
+--
+
+INSERT INTO `report_answer` (`id`, `user_id`, `answer_id`, `report_details`, `report_date`) VALUES
+(1, 13, 9, 'bad bad', '2019-06-25 12:56:09'),
+(2, 13, 13, 'bad answer', '2019-06-25 12:57:20'),
+(3, 13, 12, 'bad answer', '2019-06-25 13:06:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report_question`
+--
+
+CREATE TABLE `report_question` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `report_details` text NOT NULL,
+  `report_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `report_question`
+--
+
+INSERT INTO `report_question` (`id`, `user_id`, `question_id`, `report_details`, `report_date`) VALUES
+(1, 13, 11, 'bad question', '2019-06-25 12:33:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `upvote`
 --
 
@@ -97,7 +166,7 @@ CREATE TABLE `upvote` (
   `upvote_id` int(255) NOT NULL,
   `answer_id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
-  `upvote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `upvote_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -166,7 +235,7 @@ CREATE TABLE `user` (
   `city` varchar(255) NOT NULL,
   `gender` enum('Male','Female') DEFAULT NULL,
   `photo` varchar(255) DEFAULT './profile_images/default.png',
-  `date_reg` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_reg` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -201,11 +270,29 @@ ALTER TABLE `answer`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`question_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `report_answer`
+--
+ALTER TABLE `report_answer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `report_question`
+--
+ALTER TABLE `report_question`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `upvote`
@@ -232,10 +319,28 @@ ALTER TABLE `answer`
   MODIFY `answer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
   MODIFY `question_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `report_answer`
+--
+ALTER TABLE `report_answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `report_question`
+--
+ALTER TABLE `report_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `upvote`

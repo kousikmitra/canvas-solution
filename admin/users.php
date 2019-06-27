@@ -386,7 +386,7 @@ if (!isset($_SESSION['admin_id'])) {
     </div>
     <!--/.container-->
     <footer class="container-fluid">
-        <p class="text-right small">©2016-2017 Company</p>
+        <p class="text-right small">©2019 onwards Canvas Solution</p>
     </footer>
 
 
